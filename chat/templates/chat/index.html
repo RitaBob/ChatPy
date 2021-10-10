@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+{%load static%}
+
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>ЧАТ</title>
+        <link rel="stylesheet" href="{% static 'style.css' %}">
+    </head>
+
+    <body>
+      <div id="container">
+        <aside>
+            <header>
+              <div class="search">
+                <input type="text" placeholder="Создать чат" id="room-name-input">
+                <a id="room-name-submit">GO</a>
+              <div>
+            </header>
+            <ul>
+                <li>
+                  <a class = "button" id="room-students-submit">
+                    <img>
+                    <div class="button">
+                      <h2>Students</h2>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a class = "button" id="room-travell-submit">
+                    <img>
+                    <div class="button">
+                      <h2>Travell</h2>
+                    </div>
+                  </a>
+                </li>
+            </ul>
+        </aside>
+        <main>
+            <header>
+            </header>
+            <footer>
+            </footer>
+        </main>
+        {{ username|json_script:"json-username" }}
+        <script>
+            document.querySelector('#room-name-input').focus();
+            document.querySelector('#room-name-submit').onclick = function(e) {
+                var roomName = document.querySelector('#room-name-input').value;
+                var userName = JSON.parse(document.getElementById('json-username').textContent);
+                window.location.replace('chat=' + roomName + '/username=' + userName);
+            };
+            document.querySelector('#room-students-submit').onclick = function(e) {
+                var roomName = 'Students';
+                var userName = JSON.parse(document.getElementById('json-username').textContent);
+                window.location.replace('chat=' + roomName + '/username=' + userName);
+            };
+            document.querySelector('#room-travell-submit').onclick = function(e) {
+                var roomName = 'Travell';
+                var userName = JSON.parse(document.getElementById('json-username').textContent);
+                window.location.replace('chat=' + roomName + '/username=' + userName);
+            };
+        </script>
+    </body>
+</html>

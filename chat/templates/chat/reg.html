@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+{%load static%}
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>ЧАТ</title>
+        <link rel="stylesheet" href="{% static 'style.css' %}">
+    </head>
+
+    <body>
+      <div id="container">
+  <main>
+      <header>
+          <div>
+              <h2>Чат Джанго</h2>
+              <h3>Добро пожаловать в чат Джанго</h3>
+          </div>
+      </header>
+      <footer>
+
+            <a id = "confirm">Войти в чат</a>
+      </footer>
+  </main>
+</div>
+        <script>
+
+
+            document.querySelector('#confirm').onclick = function(e) {
+                userName = "Anon"
+                window.location.replace('/user/' + userName);
+            };
+        </script>
+    </body>
+</html>
